@@ -1,6 +1,6 @@
 data <- read.csv(file="heart.csv", head=TRUE, sep=",")
 library(caTools)
-split <- sample.split(heart, SplitRatio = 0.8)
+split <- sample.split(data, SplitRatio = 0.8)
 split
 training <- subset(data,split=="TRUE")
 testing <- subset(data,split=="FALSE")
