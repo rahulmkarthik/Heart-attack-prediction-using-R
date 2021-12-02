@@ -1,4 +1,6 @@
 data <- read.csv(file="heart.csv", head=TRUE, sep=",")
+
+install.packages("caTools") 
 library(caTools)
 split <- sample.split(data, SplitRatio = 0.8)
 split
@@ -17,6 +19,8 @@ table(Actualvalue=testing$output,Predictedvalue=res>0.5)
 
 res <- predict(model,training,output="response")
 
+install.packages("ROCR")
+library(ROCR)
 ROCRPred = prediction(res, training$output)
 ROCRPref <- performance(ROCRPred, "tpr", "fpr")
 plot(ROCRPref,colorize=TRUE, print.cutoffs.at=seq(0.1, by=0.1))
